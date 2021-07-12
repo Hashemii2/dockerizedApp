@@ -1,0 +1,25 @@
+apps:
+  - script: "./index.js"
+    exec_mode: "cluster"
+    name: "worker1"
+    env:
+      PORT: 3500
+      NODE_ENV: production
+  - script: "./index.js"
+    exec_mode: "cluster"
+    name: "worker2"
+    env:
+      PORT: 3501
+      NODE_ENV: production
+  - script: "./index.js"
+    exec_mode: "cluster"
+    name: "worker3"
+    env:
+      PORT: 3502
+      NODE_ENV: production
+  - script: "./index.js"
+    exec_mode: "cluster"
+    name: "worker4"
+    env:
+      PORT: 3503
+      NODE_ENV: production
