@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class silly extends Component {
+class simple extends Component {
   state = {
     data: [],
   };
@@ -33,4 +33,4 @@ class silly extends Component {
   }
 }
 
-export default silly;
+export default simple;

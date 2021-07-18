@@ -27,14 +27,25 @@ let data = [
   },
 ];
 
-app.get("/api", (req, res) => {
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+
+  next();
+});
+
+app.get("/", (req, res) => {
   res.send(data);
 });
 
-//not add mongodb yet.. later i expand this project...
-
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`listening on port: ${PORT}`);
+mongoose.connect("mongodb://mongo:27017/docker-mongo").then(() => {
+  app.listen(PORT, () => {
+    console.log(`listening on port: ${PORT}`);
+  });
 });

@@ -3,23 +3,23 @@ apps:
     exec_mode: "cluster"
     name: "worker1"
     env:
-      PORT: 3500
+      PORT: 4001
       NODE_ENV: production
   - script: "./index.js"
     exec_mode: "cluster"
     name: "worker2"
     env:
-      PORT: 3501
+      PORT: 4002
       NODE_ENV: production
   - script: "./index.js"
     exec_mode: "cluster"
     name: "worker3"
     env:
-      PORT: 3502
+      PORT: 4003
       NODE_ENV: production
   - script: "./index.js"
     exec_mode: "cluster"
     name: "worker4"
     env:
-      PORT: 3503
+      PORT: 4004
       NODE_ENV: production

@@ -1,34 +1,28 @@
-version: "3.1"
+version: "3.7"
 services:
-  docker-mongo:
-    image: "mongo"
-    environment:
-      - "MONGO_INITDB_ROOT_USERNAME:root"
-      - "MONGO_INITDB_ROOT_PASSWORD:example"
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: docker-mongo
+    links:
+      - mongo-db
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
   nginx:
-    depends_on:
-      - api
-      - client
     restart: always
     build:
       dockerfile: Dockerfile
       context: ./nginx
+    links:
+      - api:api
+      - client:client
     ports:
       - "3050:80"
-  api:
-    build:
-      dockerfile: Dockerfile
-      context: ./
-    environment:
-      - MONGOUSER=mongo
-      - MONGOPASSWORD=mongo_password
-      - MONGOPORT=27017
-  client:
-    stdin_open: true
-    build:
-      dockerfile: Dockerfile
-      context: ./client
-    environment:
-      - MONGOUSER=mongo
-      - MONGOPASSWORD=mongo_password
-      - MONGOPORT=27017
+  mongo-db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    container_name: mongo

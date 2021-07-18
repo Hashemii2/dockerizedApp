@@ -2,7 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import silly from "./Silly";
+import simple from "./Simple";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
           </a>
         </header>
         <div>
-          <Route exact path="/" component={silly} />
+          <Route exact path="/" component={simple} />
         </div>
       </div>
     </Router>
