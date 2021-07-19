@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  api:
+  loadbalancer:
     build:
       context: ./
       dockerfile: Dockerfile
@@ -17,7 +17,7 @@ services:
       dockerfile: Dockerfile
       context: ./nginx
     links:
-      - api:api
+      - loadbalancer:loadbalancer
       - client:client
     ports:
       - "3050:80"
